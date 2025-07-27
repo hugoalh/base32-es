@@ -8,6 +8,7 @@ authors:
 repository-code: "https://github.com/hugoalh/base32-es"
 keywords:
   - "base32"
+  - "base32hex"
   - "ecmascript"
   - "ecmascript-module"
   - "es"
