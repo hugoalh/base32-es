@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://citation-file-format.github.io/1.2.0/schema.json
+cff-version: "1.2.0"
+title: "Base32 (ES)"
+message: "If you use this software, please cite it using the metadata from this file."
+type: "software"
+authors:
+  - name: "hugoalh"
+repository-code: "https://github.com/hugoalh/base32-es"
+keywords:
+  - "base32"
+  - "ecmascript"
+  - "ecmascript-module"
+  - "es"
+  - "es-module"
+  - "esm"
+  - "esmodule"
+  - "javascript"
+  - "js"
+  - "ts"
+  - "typescript"
+license: "MIT"
