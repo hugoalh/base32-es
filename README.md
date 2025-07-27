@@ -93,15 +93,16 @@ An ECMAScript (JavaScript & TypeScript) module for Base32 encode and decode.
   ```
 - ```ts
   type Base32Variant =
-    | "rfc1421"
-    | "rfc2045"
-    | "rfc2152"
-    | "rfc3501"
-    | "rfc4648-4"
-    | "rfc4648-5"
-    | "rfc9580"
+    | "crockford"
+    | "geohash"
+    | "hex"
+    | "hexadecimal"
+    | "rfc3548"
+    | "rfc4648-6"
+    | "rfc4648-7"
     | "standard"
-    | "url";
+    | "wordsafe"
+    | "z";
   ```
 - ```ts
   interface Base32BasicOptions {
