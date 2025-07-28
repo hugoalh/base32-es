@@ -13,10 +13,10 @@ An ECMAScript (JavaScript & TypeScript) module for Base32 encode and decode.
 - Support multiple variants alphabet and padding:
   - [RFC 4648 §6: Base32 encoding](https://datatracker.ietf.org/doc/html/rfc4648#section-6) (Standard)
   - [RFC 4648 §7: Base32 encoding with extended hex alphabet](https://datatracker.ietf.org/doc/html/rfc4648#section-6) (Base32Hex)
-  - Crockford's Base32 encoding (Douglas Crockford's Base32 encoding)
-  - Geohash Base32 encoding
-  - Word-safe Base32 encoding
-  - z-base-32 (Zooko Wilcox-O'Hearn's Base32 encoding)
+  - Douglas Crockford's Base32 encoding (Base32Crockford)
+  - Geohash Base32 encoding (Base32Geohash)
+  - Word-safe Base32 encoding (Base32WordSafe)
+  - Zooko Wilcox-O'Hearn's Base32 encoding (z-base-32) (Base32Z)
 - Support stream encode and decode.
 
 ## 🔰 Begin
