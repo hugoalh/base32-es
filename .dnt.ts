@@ -16,7 +16,8 @@ await invokeDenoNodeJSTransformer({
 		version: configJSR.getVersion(),
 		description: "A module for Base32 encode and decode.",
 		keywords: [
-			"base32"
+			"base32",
+			"base32hex"
 		],
 		homepage: "https://github.com/hugoalh/base32-es#readme",
 		bugs: {
