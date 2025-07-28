@@ -17,6 +17,8 @@ keywords:
   - "esmodule"
   - "javascript"
   - "js"
+  - "rfc4648-6"
+  - "rfc4648-7"
   - "ts"
   - "typescript"
 license: "MIT"

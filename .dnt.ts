@@ -17,7 +17,9 @@ await invokeDenoNodeJSTransformer({
 		description: "A module for Base32 encode and decode.",
 		keywords: [
 			"base32",
-			"base32hex"
+			"base32hex",
+			"rfc4648-6",
+			"rfc4648-7"
 		],
 		homepage: "https://github.com/hugoalh/base32-es#readme",
 		bugs: {
