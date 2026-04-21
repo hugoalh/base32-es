@@ -2,9 +2,10 @@
 
 [**⚖️** MIT](./LICENSE.md)
 
-[![GitHub: hugoalh/base32-es](https://img.shields.io/github/v/release/hugoalh/base32-es?label=hugoalh/base32-es&labelColor=181717&logo=github&logoColor=ffffff&sort=semver&style=flat "GitHub: hugoalh/base32-es")](https://github.com/hugoalh/base32-es)
-[![JSR: @hugoalh/base32](https://img.shields.io/jsr/v/@hugoalh/base32?label=@hugoalh/base32&labelColor=F7DF1E&logo=jsr&logoColor=000000&style=flat "JSR: @hugoalh/base32")](https://jsr.io/@hugoalh/base32)
-[![NPM: @hugoalh/base32](https://img.shields.io/npm/v/@hugoalh/base32?label=@hugoalh/base32&labelColor=CB3837&logo=npm&logoColor=ffffff&style=flat "NPM: @hugoalh/base32")](https://www.npmjs.com/package/@hugoalh/base32)
+🔗
+[GitHub](https://github.com/hugoalh/base32-es)
+[JSR](https://jsr.io/@hugoalh/base32)
+[NPM](https://www.npmjs.com/package/@hugoalh/base32)
 
 An ECMAScript module for Base32 encode and decode.
 
