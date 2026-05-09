@@ -4,8 +4,8 @@
 
 🔗
 [GitHub](https://github.com/hugoalh/base32-es)
-[JSR](https://jsr.io/@hugoalh/base32)
-[NPM](https://www.npmjs.com/package/@hugoalh/base32)
+● [JSR](https://jsr.io/@hugoalh/base32)
+● [NPM](https://www.npmjs.com/package/@hugoalh/base32)
 
 An ECMAScript module for Base32 encode and decode.
 
