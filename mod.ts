@@ -115,11 +115,11 @@ export class Base32Decoder {
 			throw new Error(`Encoded data does not exclusively consist of Base32 (${this.#variant}) characters!`);
 		}
 		let bin: string = "";
-		const result: string[] = [];
+		const result: number[] = [];
 		for (let index: number = 0; index < itemFmt.length; index += 1) {
 			bin += alphabet.indexOf(itemFmt[index]).toString(2).padStart(5, "0");
 			while (bin.length >= 8) {
-				result.push(bin.slice(0, 8));
+				result.push(Number.parseInt(bin.slice(0, 8), 2));
 				bin = bin.slice(8);
 			}
 		}
@@ -128,9 +128,7 @@ export class Base32Decoder {
 		})) {
 			throw new Error(`Encoded data does not exclusively consist of Base32 (${this.#variant}) characters!`);
 		}
-		return Uint8Array.from(result.map((value: string): number => {
-			return Number.parseInt(value, 2);
-		}));
+		return Uint8Array.from(result);
 	}
 	/**
 	 * Decode from Base32 to text.
