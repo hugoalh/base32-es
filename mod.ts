@@ -90,7 +90,7 @@ export class Base32Decoder {
 	constructor(options: Base32DecodeOptions = {}) {
 		const { variant = "standard" }: Base32DecodeOptions = options;
 		if (typeof specifications[variant] === "undefined") {
-			throw new RangeError(`\`${variant}\` is not a valid Base32 variant type! Only accept these values: ${Object.keys(specifications).sort().join(", ")}`);
+			throw new RangeError(`\`${variant}\` is not a valid Base32 variant type! Only accept these values: ${Object.keys(specifications).sort().join(", ")}.`);
 		}
 		this.#variant = variant;
 	}
@@ -159,7 +159,7 @@ export class Base32Encoder {
 		}: Base32EncodeOptions = options;
 		const specification: Base32Specification | undefined = specifications[variant];
 		if (typeof specification === "undefined") {
-			throw new RangeError(`\`${variant}\` is not a valid Base32 variant type! Only accept these values: ${Object.keys(specifications).sort().join(", ")}`);
+			throw new RangeError(`\`${variant}\` is not a valid Base32 variant type! Only accept these values: ${Object.keys(specifications).sort().join(", ")}.`);
 		}
 		this.#padding = (padding === null) ? specification.padding : padding;
 		this.#variant = variant;
