@@ -7,7 +7,10 @@ import {
 	type Base32Variant
 } from "./mod.ts";
 async function testerDirect(t: Deno.TestContext, decoded: string | Uint8Array, expects: Partial<Record<Base32Variant, string>>): Promise<void> {
-	for (const [variant, encoded] of Object.entries(expects)) {
+	for (const [
+		variant,
+		encoded
+	] of Object.entries(expects)) {
 		await t.step(`${variant} Encode`, () => {
 			deepStrictEqual(new Base32Encoder({
 				variant: variant as Base32Variant

@@ -82,6 +82,7 @@ export class Base32Decoder {
 	get [Symbol.toStringTag](): string {
 		return "Base32Decoder";
 	}
+	#specification: Base32Specification;
 	#variant: Base32Variant;
 	/**
 	 * Initialize.
@@ -89,9 +90,11 @@ export class Base32Decoder {
 	 */
 	constructor(options: Base32DecodeOptions = {}) {
 		const { variant = "standard" }: Base32DecodeOptions = options;
-		if (typeof specifications[variant] === "undefined") {
+		const specification: Base32Specification | undefined = specifications[variant];
+		if (typeof specification === "undefined") {
 			throw new RangeError(`\`${variant}\` is not a valid Base32 variant type! Only accept these values: ${Object.keys(specifications).sort().join(", ")}.`);
 		}
+		this.#specification = specification;
 		this.#variant = variant;
 	}
 	/**
@@ -107,21 +110,19 @@ export class Base32Decoder {
 	 * @returns {Uint8Array} A decoded bytes.
 	 */
 	decodeToBytes(item: string | Uint8Array): Uint8Array {
-		const { alphabet }: Base32Specification = specifications[this.#variant];
+		const { alphabet }: Base32Specification = this.#specification;
 		const itemFmt: string = ((typeof item === "string") ? item : new TextDecoder().decode(item)).replaceAll("=", "");
-		if (!itemFmt.split("").every((character: string): boolean => {
-			return alphabet.includes(character);
-		})) {
-			throw new Error(`Encoded data does not exclusively consist of Base32 (${this.#variant}) characters!`);
-		}
-		let bin: string = "";
-		const result: number[] = [];
-		for (let index: number = 0; index < itemFmt.length; index += 1) {
-			bin += alphabet.indexOf(itemFmt[index]).toString(2).padStart(5, "0");
-			while (bin.length >= 8) {
-				result.push(Number.parseInt(bin.slice(0, 8), 2));
-				bin = bin.slice(8);
+		let bin: string = itemFmt.split("").map((character: string): string => {
+			const index: number = alphabet.indexOf(character);
+			if (index < 0) {
+				throw new Error(`Encoded data does not exclusively consist of Base32 (${this.#variant}) characters!`);
 			}
+			return index.toString(2).padStart(5, "0");
+		}).join("");
+		const result: number[] = [];
+		while (bin.length >= 8) {
+			result.push(Number.parseInt(bin.slice(0, 8), 2));
+			bin = bin.slice(8);
 		}
 		if (bin.length > 0 && bin.split("").some((character: string): boolean => {
 			return (character !== "0");
@@ -147,6 +148,7 @@ export class Base32Encoder {
 		return "Base32Encoder";
 	}
 	#padding: boolean;
+	#specification: Base32Specification;
 	#variant: Base32Variant;
 	/**
 	 * Initialize.
@@ -162,6 +164,7 @@ export class Base32Encoder {
 			throw new RangeError(`\`${variant}\` is not a valid Base32 variant type! Only accept these values: ${Object.keys(specifications).sort().join(", ")}.`);
 		}
 		this.#padding = (padding === null) ? specification.padding : padding;
+		this.#specification = specification;
 		this.#variant = variant;
 	}
 	/**
@@ -192,16 +195,15 @@ export class Base32Encoder {
 	 * @returns {string} A Base32 encoded text.
 	 */
 	encodeToText(item: string | Uint8Array): string {
-		const { alphabet }: Base32Specification = specifications[this.#variant];
+		const { alphabet }: Base32Specification = this.#specification;
 		const itemFmt: Uint8Array = (typeof item === "string") ? new TextEncoder().encode(item) : item;
-		let bin: string = "";
+		let bin: string = Array.from(itemFmt, (byte: number): string => {
+			return byte.toString(2).padStart(8, "0");
+		}).join("");
 		let result: string = "";
-		for (const byte of itemFmt) {
-			bin += byte.toString(2).padStart(8, "0");
-			while (bin.length >= 5) {
-				result += alphabet.charAt(Number.parseInt(bin.slice(0, 5), 2));
-				bin = bin.slice(5);
-			}
+		while (bin.length >= 5) {
+			result += alphabet.charAt(Number.parseInt(bin.slice(0, 5), 2));
+			bin = bin.slice(5);
 		}
 		if (bin.length > 0) {
 			result += alphabet.charAt(Number.parseInt(bin.padEnd(5, "0"), 2));
