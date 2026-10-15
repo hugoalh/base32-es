@@ -224,7 +224,7 @@ export class Base32DecoderStream extends TransformStream<Uint8Array, Uint8Array>
 	 * Initialize.
 	 * @param {Base32DecodeOptions} [options={}] Base32 decode options.
 	 */
-	constructor(options?: Base32DecodeOptions) {
+	constructor(options: Base32DecodeOptions = {}) {
 		super({
 			transform: (chunk: Uint8Array, controller: TransformStreamDefaultController<Uint8Array>): void => {
 				this.#bin.push(...Array.from(chunk));
